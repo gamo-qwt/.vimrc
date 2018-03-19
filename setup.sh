@@ -1,8 +1,9 @@
+file=.vimrc
 cd ~/
-if[-e .vimrc]; then
+if [ -e $file ]; then
 	rm .vimrc
 	mv ~/vimrc/.vimrc ~/.vimrc
 else
-	mv ~/virc/,vimrc ~/.vimrc
+	mv ~/vimrc/.vimrc ~/.vimrc
 fi
 
