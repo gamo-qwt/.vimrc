@@ -53,6 +53,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 	NeoBundle 'tomasr/molokai'
 	NeoBundle 'croaker/mustang-vim'
 	NeoBundle 'scrooloose/nerdtree'
+	NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	NeoBundle 'junegunn/fzf.vim'
 	
 	set t_Co=256
 	syntax enable
@@ -62,8 +64,8 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-colorscheme atom-dark-256
 set t_Co=256
+colorscheme atom-dark-256
 syntax enable
 
 let g:syntastic_enable_signs = 1
@@ -72,3 +74,14 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers=['eslint']
+
+set rtp+=~/.fzf
+
+" deniteと合わせて上部に表示
+let g:fzf_layout = { 'up': '~40%' }
+
+" <C-]>でタグ検索
+nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
+
+" fzfからファイルにジャンプできるようにする
+let g:fzf_buffers_jump = 1
